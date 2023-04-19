@@ -11,9 +11,10 @@ const qrCode = require('qrcode-reader');
 /** //////////////////////////////////////////////////////////////////////////// */
  
 /** bot telegram imports and constants */
+require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 // replace the value below with the Telegram token you receive from @BotFather
-const token = '5965165310:AAF6fOS5Ov4zYVnPGdsPy4QSHuPur8VVr0E';
+const token = process.env.BOT_KEY;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 /** //////////////////////////////////////////////////////////////////////////// */

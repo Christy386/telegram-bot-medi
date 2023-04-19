@@ -54,47 +54,25 @@ func(parameters_if_exists, (err, rows) => {// callback function
 });
 ```
 
-### Installing
+## 🎈 Usage <a name="Config file of systemctl"></a>
 
-A step by step series of examples that tell you how to get a development env running.
+In the directory ``` /etc/systemd/system/telegram-bot.service ``` exists the config file of systemctl. This config manage the start of program in the Linux initialization.
 
-Say what the step will be
+```sh
+[Unit]
+Description=Telegram Bot
 
-```
-Give the example
-```
+[Service]
+ExecStart=/usr/bin/node /home/medi/Aplications/telegram-bot-medi/index
+Restart=always
+User=medi
+Environment=PATH=/usr/bin:/usr/local/bin
+WorkingDirectory=/home/medi/Aplications/telegram-bot-medi
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+[Install]
+WantedBy=multi-user.target
 
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
