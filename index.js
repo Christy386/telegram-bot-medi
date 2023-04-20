@@ -1,15 +1,3 @@
-/** qrcode reader imports */
-//Importing jimp module
-const Jimp = require("jimp");
-// Importing filesystem module
-//const fs = require('fs')
-//import https module
-const https = require('https');
-const http = require('http');
-// Importing qrcode-reader module
-const qrCode = require('qrcode-reader');
-/** //////////////////////////////////////////////////////////////////////////// */
- 
 /** bot telegram imports and constants */
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');

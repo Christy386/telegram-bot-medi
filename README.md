@@ -22,6 +22,7 @@
 
 ## 📝 Table of Contents
 
+- [About](#about)
 - [DB Controller](#DBController)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
@@ -34,29 +35,28 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+This is the documentation of the telegram bot.
 
-## 🏁 DB Controller <a name = "DBController"></a>
+## 🎈 Telegram Bot Service <a name="Telegram-Bot-Service"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+### 🎈 Systemctl Commands <a name="Systemctl-Commands"></a>
 
-### Prerequisites
-
-What things you need to install the software and how to install them.
-
-```js
-func(parameters_if_exists, (err, rows) => {// callback function
-    if (err) {
-        return console.error(err.message);
-    }else{
-        <commands using 'rows' variable>
-    }
-});
+Restart bot server:
+```sh
+systemctl restart telegram-bot
+```
+Start bot server:
+```sh
+systemctl start telegram-bot
+```
+Stop bot server:
+```sh
+systemctl stop telegram-bot
 ```
 
-## 🎈 Usage <a name="Config file of systemctl"></a>
+### 🎈 Systemctl Config File <a name="Config-File"></a>
 
-In the directory ``` /etc/systemd/system/telegram-bot.service ``` exists the config file of systemctl. This config manage the start of program in the Linux initialization.
+In the file ``` /etc/systemd/system/telegram-bot.service ``` configure the systemctl to listen the telegram bot. This config manage the start of program in the Linux initialization. If not exists, create like this:
 
 ```sh
 [Unit]
@@ -73,10 +73,95 @@ WorkingDirectory=/home/medi/Aplications/telegram-bot-medi
 WantedBy=multi-user.target
 
 ```
+## 🏁 DBs (Database) <a name = "DBController"></a>
 
-## 🚀 Deployment <a name = "deployment"></a>
+In the Telegram bot, we have 2 DBs: 
 
-Add additional notes about how to deploy this on a live system.
+- SQLite DB with the log of all actions of all bot users.
+- MySQL DB with the data of Medi server.
+
+### SQLite DB
+
+In the SQLite DB, the server can call functions to controll the DB.
+
+<b> createLogTable(callback) </b>
+
+```createLogTable``` is responsible for creating the log table in the database. It takes a single parameter, which is a callback function that will be called when the table is created. The function opens a connection to the database, executes a SQL command to create the log table if it doesn't already exist, and then closes the database connection. If the table is created successfully, the callback function will be called without any errors. Otherwise, the callback function will be called with an error message. Usage example:
+
+```js
+createLogTable((err) => {// callback function
+    if (err) {
+        console.error(err.message);
+    }else{
+        console.log("The log table was created");
+    }
+});
+```
+
+<b> newLog(name, chatKey, command, productID, callback) </b>
+
+```newLog``` is responsible for inserting a new row into the log table. It takes five parameters: name, chatKey, command, productID, and callback. name and chatKey represent the name and chatKey of the user who executed the command, respectively. command represents the command that was executed by the user. productID represents the ID of the product that was affected by the command (if applicable). callback is a function that will be called when the row is inserted. Usage example:
+
+```js
+newLog(name, chatKey, command, productID, (err) => {// callback function
+    if (err) {
+        console.error(err.message);
+    }else{
+        console.log("New log was created"); 
+    }
+});
+```
+
+<b> deleteLogTable(callback) </b>
+
+```js
+deleteLogTable((err) => {// callback function
+    if (err) {
+        return console.error(err.message);
+    }else{
+        console.log("Log table was deleted");
+    }
+});
+```
+### MySQL DB
+
+In the MySQL DB, the server can call functions to controll the DB. MySQL database requires Telegram bot to connect to it using connection data like this:
+
+```js
+const mySQLCredentials = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
+}
+```
+For security, the variables ```js process.env.DB_* ``` are localized in the ```.env``` file as ambient variables. For more information see [Dotenv](#dotenv).
+
+Below, the functions exemple usage:
+
+<b>getSolicitacoesOperadorByID(id)</b>
+
+This function retrieves data from the database for a specific ID. The function takes a single parameter, the ID of the record to be retrieved. It returns a Promise that resolves with an object representing the queried record or rejects with an error.
+
+```js
+
+const DBController = require('./DBController.js');
+
+DBController.getSolicitacoesOperadorByID(1385)
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+
+```
+This will retrieve the record with ID 1385 from the database and log the data object to the console.
+
+
+## 🚀 Dotenv <a name = "dotenv"></a>
+
+
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 

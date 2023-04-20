@@ -1,10 +1,12 @@
+//require('dotenv').config();
+
 const mysql = require('mysql');
 
 const mySQLCredentials = {
-    host: 'sql803.main-hosting.eu',
-    user: 'u435283178_bd_hub_medi',
-    password: 'Emedi3dpapae!',
-    database: 'u435283178_bd_hub_medi'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 }
 
 function getSolicitacoesOperadorByID(id) {
