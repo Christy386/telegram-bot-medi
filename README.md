@@ -23,8 +23,8 @@
 ## 📝 Table of Contents
 
 - [About](#about)
+- [Instalation](#instalation)
 - [Telegram Bot Service](#telegram-bot-service)
-- [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
@@ -37,7 +37,26 @@
 
 This is a Telegram bot developed in Node.js that reads QR Codes from images and performs actions on a production line management system. The bot is integrated with a SQLite and MySQL database to register logs and read the product state on the production line.
 
-## Instalation <a name="Instalation"></a>
+## Instalation <a name="instalation"></a>
+
+To use this bot, you need to follow these steps:
+
+1. Clone the repository:
+
+```sh 
+git clone "https://github.com/Christy386/telegram-bot-medi.git" 
+```
+
+2. Install the dependencies:
+```sh  
+npm install
+```
+
+3. Create a .env file in the root directory of the project and include your envoriment variables (Telegram API and MySQL login):
+
+```s
+BOT_KEY=<your_telegram_bot_API_key>
+```
 
 ## 🎈 Telegram Bot Service <a name="telegram-bot-service"></a>
 
