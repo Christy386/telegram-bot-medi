@@ -35,7 +35,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-This is the documentation of the telegram bot.
+This is a Telegram bot developed in Node.js that reads QR Codes from images and performs actions on a production line management system. The bot is integrated with a SQLite database to register logs and administrative users.
 
 ## 🎈 Telegram Bot Service <a name="Telegram-Bot-Service"></a>
 
