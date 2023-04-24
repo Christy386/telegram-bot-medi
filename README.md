@@ -23,7 +23,7 @@
 ## 📝 Table of Contents
 
 - [About](#about)
-- [DB Controller](#DBController)
+- [Telegram Bot Service](#Telegram-Bot-Service)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
@@ -35,7 +35,9 @@
 
 ## 🧐 About <a name = "about"></a>
 
-This is a Telegram bot developed in Node.js that reads QR Codes from images and performs actions on a production line management system. The bot is integrated with a SQLite database to register logs and administrative users.
+This is a Telegram bot developed in Node.js that reads QR Codes from images and performs actions on a production line management system. The bot is integrated with a SQLite and MySQL database to register logs and read the product state on the production line.
+
+## Instalation <a name="Instalation"></a>
 
 ## 🎈 Telegram Bot Service <a name="Telegram-Bot-Service"></a>
 
@@ -54,7 +56,7 @@ Stop bot server:
 systemctl stop telegram-bot
 ```
 
-### 🎈 Systemctl Config File <a name="Config-File"></a>
+### 🔧 Systemctl Config File <a name="Config-File"></a>
 
 In the file ``` /etc/systemd/system/telegram-bot.service ``` configure the systemctl to listen the telegram bot. This config manage the start of program in the Linux initialization. If not exists, create like this:
 
