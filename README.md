@@ -23,7 +23,7 @@
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Telegram Bot Service](#tbs)
+- [Telegram Bot Service](#telegram-bot-service)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
@@ -39,7 +39,7 @@ This is a Telegram bot developed in Node.js that reads QR Codes from images and 
 
 ## Instalation <a name="Instalation"></a>
 
-## 🎈 Telegram Bot Service <a name="tbs"></a>
+## 🎈 Telegram Bot Service <a name="telegram-bot-service"></a>
 
 ### 🎈 Systemctl Commands <a name="Systemctl-Commands"></a>
 
