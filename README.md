@@ -56,6 +56,10 @@ npm install
 
 ```s
 BOT_KEY=<your_telegram_bot_API_key>
+DB_HOST=<your_db_host>
+DB_USER=<your_db_>
+DB_PASSWORD=<your_db_password>
+DB_DATABASE=<your_db_database>
 ```
 
 ## 🎈 Telegram Bot Service <a name="telegram-bot-service"></a>
