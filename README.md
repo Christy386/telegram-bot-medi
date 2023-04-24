@@ -23,7 +23,7 @@
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Telegram Bot Service](#telegram-Bot-Service)
+- [Telegram Bot Service](#telegram-bot-service)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
