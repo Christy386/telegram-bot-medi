@@ -87,7 +87,9 @@ Manege the product by id sending the command ``` /next <id> ``` and the bot will
 
 ### Send photo
 
-If the telegram user sent an photo to telegram 
+If the telegram user sent an photo to telegram the bot will altomatically read the image. If the bot can read a QR code, the bot will return the response of the ``` /next ``` command, if not, the bot will return an error.
+
+
 
 ## 🎈 Telegram Bot Service <a name="telegram-bot-service"></a>
 
