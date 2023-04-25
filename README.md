@@ -85,7 +85,7 @@ Displays all available commands.
 
 Manege the product by id sending the command ``` /next <id> ``` and the bot will return if the action is done and the next estep of the product or if ocurred an error.
 
-## Send photo
+### Send photo
 
 If the telegram user sent an photo to telegram 
 
