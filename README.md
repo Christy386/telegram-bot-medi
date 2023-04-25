@@ -33,9 +33,13 @@
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
+---
+
 ## 🧐 About <a name = "about"></a>
 
 This is a Telegram bot developed in Node.js that reads QR Codes from images and performs actions on a production line management system. The bot is integrated with a SQLite and MySQL database to register logs and read the product state on the production line.
+
+---
 
 ## Instalation <a name="instalation"></a>
 
@@ -68,6 +72,7 @@ DB_DATABASE=<your_db_database>
 ```sh 
 node index 
 ```
+---
 
 ## Usage
 
@@ -89,7 +94,7 @@ Manege the product by id sending the command ``` /next <id> ``` and the bot will
 
 If the telegram user sent an photo to telegram the bot will altomatically read the image. If the bot can read a QR code, the bot will return the response of the ``` /next ``` command, if not, the bot will return an error.
 
-
+---
 
 ## 🎈 Telegram Bot Service <a name="telegram-bot-service"></a>
 
@@ -127,6 +132,75 @@ WorkingDirectory=/home/medi/Aplications/telegram-bot-medi
 WantedBy=multi-user.target
 
 ```
+---
+
+## Bot Actions
+
+The code exports an object named botActions that includes the following functions:
+
+### <b>readQRWithBot(link, callback)</b>
+
+This function takes in a `link` argument, which is a URL to an image containing a QR code, and a `callback` argument, which is a function that will be called with the decoded QR code data. It uses the `https` module to download the image data, then uses the `jimp` module to read the image and the `qrcode-reader` module to decode the QR code. An example usage of this function might look like this:
+
+```js
+botActions.readQRWithBot("https://example.com/qrcode.png", function(data) {
+    console.log("Decoded QR code data:", data);
+});
+```
+
+### <b>currentStatus(productId, callbackDone, callbackErr)</b>
+
+This function takes in a `productId` argument, which is an identifier for the product whose status you want to check, as well as two callback functions: `callbackDone` and `callbackErr`. `callbackDone` will be called with the product status data if the status is successfully retrieved, while `callbackErr` will be called with an error message if there is an error retrieving the status. An example usage of this function might look like this:
+
+```js
+botActions.currentStatus("12345", (data) => {
+    console.log("Product status data:", data);
+}, (error) => {
+    console.error("Error getting product status:", error);
+});
+```
+
+### <b>go2approved(productId)</b> 
+
+This function takes in a `productId` argument, which is an identifier for the product that you want to approve. It sends an HTTP GET request to a specific URL to approve the product. An example usage of this function might look like this:
+
+```js
+botActions.go2approved("12345");
+```
+
+### <b>go2StartPrint(productId)</b>
+
+ This function takes in a `productId` argument, which is an identifier for the product that you want to start printing. It sends an HTTP GET request to a specific URL to start the printing process. An example usage of this function might look like this:
+
+```js
+botActions.go2StartPrint("12345");
+```
+
+### <b>go2AfterProcess(productId)</b>
+
+This function takes in a `productId` argument, which is an identifier for the product that you want to mark as having completed processing. It sends an HTTP GET request to a specific URL to mark the product as processed. An example usage of this function might look like this:
+
+```js
+botActions.go2AfterProcess("12345");
+```
+
+### <b>go2EndPrint(productId)</b>
+
+This function takes in a `productId` argument, which is an identifier for the product that you want to mark as having completed printing. It sends an HTTP GET request to a specific URL to mark the product as printed. An example usage of this function might look like this:
+
+```js
+botActions.go2EndPrint("12345");
+```
+
+### <b>go2delivery(productId)</b>
+
+This function takes in a `productId` argument, which is an identifier for the product that you want to mark as delivered. It sends an HTTP GET request to a specific URL to mark the product as delivered. An example usage of this function might look like this:
+
+```js
+botActions.go2delivery("12345");
+```
+---
+
 ## 🏁 DBs (Database) <a name = "DBController"></a>
 
 In the Telegram bot, we have 2 DBs: 
@@ -136,7 +210,11 @@ In the Telegram bot, we have 2 DBs:
 
 ### SQLite DB
 
-In the SQLite DB, the server can call functions to controll the DB.
+In the SQLite DB, the server can call functions to controll the DB. This functions will be imported coding like this being in the root of the main directory:
+
+```js
+const DBControllerSQlite = require('./database/DBControllerSQLite');
+```
 
 <b> createLogTable(callback) </b>
 
@@ -179,7 +257,14 @@ deleteLogTable((err) => {// callback function
 ```
 ### MySQL DB
 
-In the MySQL DB, the server can call functions to controll the DB. MySQL database requires Telegram bot to connect to it using connection data like this:
+In the MySQL DB, the server can call functions to controll the DB. This functions will be imported coding like this being in the root of the main directory:
+
+
+```js
+const DBControllerMySQL = require('./../database/DBControllerMySQL');
+```
+
+A MySQL database requires Telegram bot to connect to it using connection data like this:
 
 ```js
 const mySQLCredentials = {
@@ -212,6 +297,7 @@ DBController.getSolicitacoesOperadorByID(1385)
 ```
 This will retrieve the record with ID 1385 from the database and log the data object to the console.
 
+---
 
 ## 🚀 Dotenv <a name = "dotenv"></a>
 
