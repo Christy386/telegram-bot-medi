@@ -61,6 +61,33 @@ DB_USER=<your_db_>
 DB_PASSWORD=<your_db_password>
 DB_DATABASE=<your_db_database>
 ```
+4. Create a database file in the database folder with the name ``` telegramBotDB.db ```.
+
+5. Run the project:
+
+```sh 
+node index 
+```
+
+## Usage
+
+The bot listens to messages sent to it and performs different actions based on the message content.
+
+### /myID
+
+Returns the chat ID of the user who sent the message.
+
+### /help
+
+Displays all available commands.
+
+### /next
+
+Manege the product by id sending the command ``` /next <id> ``` and the bot will return if the action is done and the next estep of the product or if ocurred an error.
+
+## Send photo
+
+If the telegram user sent an photo to telegram 
 
 ## 🎈 Telegram Bot Service <a name="telegram-bot-service"></a>
 
