@@ -41,3 +41,7 @@ WantedBy=multi-user.target
 EOF
 
 echo "Successfully created telegram-bot.service file."
+
+systemctl start telegram-bot
+systemctl status telegram-bot
+echo "Successfully installed"
