@@ -4,7 +4,7 @@ npm i
 
 read -p "Do you want to create and configure the .env file? (y/n) " answer
 
-if [ "$answer" == "${answer#[Yy]}" ]; then
+if [ "$answer" != "${answer#[Yy]}" ]; then
     # Ask the user for the values of each parameter
     read -p "Enter your Telegram Bot API key: " BOT_KEY
     read -p "Enter your database host: " DB_HOST
