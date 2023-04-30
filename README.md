@@ -109,11 +109,11 @@ In the file ``` /etc/systemd/system/telegram-bot.service ``` configure the syste
 Description=Telegram Bot
 
 [Service]
-ExecStart=/usr/bin/node /home/medi/Aplications/telegram-bot-medi/index
+ExecStart=/usr/bin/node /root/telegram-bot-medi/index
 Restart=always
-User=medi
+User=root
 Environment=PATH=/usr/bin:/usr/local/bin
-WorkingDirectory=/home/medi/Aplications/telegram-bot-medi
+WorkingDirectory=/root/telegram-bot-medi
 
 [Install]
 WantedBy=multi-user.target
