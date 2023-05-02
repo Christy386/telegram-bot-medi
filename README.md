@@ -28,7 +28,23 @@ This is a Telegram bot developed in Node.js that reads QR Codes from images and 
 
 ---
 
-## Instalation <a name="instalation"></a>
+## Executable Instalation <a name="instalation"></a>
+
+For a easy installation, just type these commands.
+
+1. Clone the repository:
+
+```sh 
+git clone "https://github.com/Christy386/telegram-bot-medi.git" 
+```
+2. Config file permissions:
+```sh 
+sudo chmod 777 ./install.sh
+```
+
+---
+
+## Manual Instalation <a name="instalation"></a>
 
 To use this bot, you need to follow these steps:
 
