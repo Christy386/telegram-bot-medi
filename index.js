@@ -103,8 +103,8 @@ bot.on('message', (msg) => {
         bot.sendMessage(chatId, 'Telegram ID is:');
         bot.sendMessage(chatId, chatId);
     }else if(msg.text == "/help"){//send all commands to user
-        console.log('commands: \n /myID - Return your ID\n /next <product id> - Pass the product to the next product line stage\n /help - Show commands\n')
-        bot.sendMessage(chatId, 'commands:\n /myID - Return your ID \n /next <product id> - Pass the product to the next product line stage\n /help - Show commands\n /status <product id> - Show the product status');
+        console.log('Commands: \n /myID - Return your ID\n /next <product id> - Pass the product to the next product line stage\n /help - Show commands\n')
+        bot.sendMessage(chatId, 'Commands:\n /myID - Return your ID \n /next <product id> - Pass the product to the next product line stage\n /help - Show commands\n /status <product id> - Show the product status');
     }else if(msg.text.split(' ')[0] == "/status"){
         const textSplited = msg.text.split(' ')
         const productId = textSplited[1];
