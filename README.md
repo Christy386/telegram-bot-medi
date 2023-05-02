@@ -41,7 +41,10 @@ git clone "https://github.com/Christy386/telegram-bot-medi.git"
 ```sh 
 sudo chmod 777 ./install.sh
 ```
-
+3. Executes the instalation file:
+```sh 
+sudo ./install.sh
+```
 ---
 
 ## Manual Instalation <a name="instalation"></a>
@@ -91,11 +94,11 @@ Displays all available commands.
 
 ### /next
 
-Manege the product by id sending the command ``` /next <id> ``` and the bot will return if the action is done and the next estep of the product or if ocurred an error.
+Manege the product by id sending the command ``` /next <product id> ``` and the bot will return if the action is done and the next estep of the product or if ocurred an error.
 
 ### Send photo
 
-If the telegram user sent an photo to telegram the bot will altomatically read the image. If the bot can read a QR code, the bot will return the response of the ``` /next ``` command, if not, the bot will return an error.
+If the telegram user sent an photo to telegram, the bot will altomatically read the image. If the bot can read a QR code, the bot will return the response of the ``` /next ``` command, if not, the bot will return an error.
 
 ---
 

@@ -102,24 +102,24 @@ bot.on('message', (msg) => {
         console.log('Telegram ID is: ' + chatId)
         bot.sendMessage(chatId, 'Telegram ID is:');
         bot.sendMessage(chatId, chatId);
-    }else if(msg.text == "/help"){//send all commands to user
-        console.log('commands: \n /myID - Return your ID\n /next <product id> - Pass the product to the next product line stage\n /help - Show commands\n')
-        bot.sendMessage(chatId, 'commands:\n /myID - Return your ID \n /next <product id> - Pass the product to the next product line stage\n /help - Show commands\n /status <product id> - Show the product status');
-    }else if(msg.text.split(' ')[0] == "/status"){
+    }else if(msg.text.split(' ')[0] == "/newAdm"){// add in new Adm //////////////////////////////////////////////////////////////// 
         const textSplited = msg.text.split(' ')
-        const productId = textSplited[1];
-        botActions.currentStatus(productId, (data) => {//callbackDone function
-            //bot.sendMessage(chatId, data);
-            //console.log(data.id_solicitacao);
-            if(data){
-                console.log(`The product ${productId} status: ${data.status_servico}`);
-                bot.sendMessage(chatId,`The product ${productId} status: ${data.status_servico}`);
+        const admName = textSplited[1];
+        const admId = textSplited[2];
+        console.log(textSplited[1]);
+        console.log(textSplited[2]);
+        DBControllerSQlite.newAdm(admName, admId, (err) => {
+            if (err) {
+                return console.error(err.message);
+            }else{
+                console.log('new adm is created');
+                bot.sendMessage(chatId, 'Added new adm with ID: \n' + admId + '\nAnd name: \n' + admName);
             }
-        },(err) => {
-            console.error(err);
-            bot.sendMessage(chatId, 'Erro');
         });
-
+        
+    }else if(msg.text == "/help"){//send all commands to user
+        console.log('commands: \n /myID - return your ID\n /newADM - add new ADM\n /help - show commands\n')
+        bot.sendMessage(chatId, 'commands: \n /myID - return your ID\n /newADM - add new ADM\n /help - show commands\n');
     }else if(msg.text.split(' ')[0] == "/next"){//next step of the product
         const textSplited = msg.text.split(' ')
         const productId = textSplited[1];
