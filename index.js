@@ -164,9 +164,6 @@ bot.on('message', (msg) => {
                 bot.sendMessage(chatId, 'Product with id: ' + productId + ' ended the production line and delivered or an error is occurred');
             }
             
-
-            
-            
         },(err) => {
             console.error(err);
             bot.sendMessage(chatId, 'Erro');

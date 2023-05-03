@@ -62,83 +62,158 @@ function currentStatus(productId, callbackDone, callbackErr){//2 callbacks, the 
 }
 
 function go2approved(productId){
-    const url = "http://labpronto.com.br/hub/indexProjMedi.php?func=aprova&id="+productId;
+    const url = process.env.DOMAIN+"/hub/indexProjMedi.php?func=aprova&id="+productId;
 
-    http.get(url, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
+    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
+        https.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("Approved");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-        res.on('end', () => {
-            console.log("Approved");
+
+    }else{
+        http.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("Approved");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-    }).on('error', (err) => {
-        console.error(`Error: ${err.message}`);
-    });
+    }
+    
 }
 
 function go2StartPrint(productId){
-    const url = "http://labpronto.com.br/hub/indexOperador.php?func=executa&id="+productId;
-
-    http.get(url, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
+    const url = process.env.DOMAIN+"/hub/indexOperador.php?func=executa&id="+productId;
+    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
+        https.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("printing");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-        res.on('end', () => {
-            console.log("printing");
+    }else{
+        http.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("printing");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-    }).on('error', (err) => {
-        console.error(`Error: ${err.message}`);
-    });
+    }
+    
 }
 
 function go2AfterProcess(productId){
-    const url = "http://labpronto.com.br/hub/indexOperador.php?func=finaliza&id="+productId+"&envio=%27processamento%27";
+    const url = process.env.DOMAIN+"/hub/indexOperador.php?func=finaliza&id="+productId+"&envio=%27processamento%27";
 
-    http.get(url, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
+    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
+        https.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("After Processing");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-        res.on('end', () => {
-            console.log("After Processing");
+    }else{
+        http.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("After Processing");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-    }).on('error', (err) => {
-        console.error(`Error: ${err.message}`);
-    });
+    }
+    
 }
 
 function go2EndPrint(productId){
-    const url = "http://labpronto.com.br/hub/indexOperador.php?func=finaliza&id="+productId+"&envio=1";
+    const url = process.env.DOMAIN+"/hub/indexOperador.php?func=finaliza&id="+productId+"&envio=1";
 
-    http.get(url, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
+    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
+        https.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("Ended print");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-        res.on('end', () => {
-            console.log("Ended print");
+    }else{
+        http.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("Ended print");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-    }).on('error', (err) => {
-        console.error(`Error: ${err.message}`);
-    });
+    }
+    
 }
 
 function go2delivery(productId){
-    const url = "http://labpronto.com.br/hub/solicitacoesAbertoOp.php?func=finaliza&id="+productId+"&envio=%27fim%27";
+    const url = process.env.DOMAIN+"/hub/solicitacoesAbertoOp.php?func=finaliza&id="+productId+"&envio=%27fim%27";
 
-    http.get(url, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
+    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
+        https.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("delivered");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-        res.on('end', () => {
-            console.log("delivered");
+    }else{
+        http.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                console.log("delivered");
+            });
+        }).on('error', (err) => {
+            console.error(`Error: ${err.message}`);
         });
-    }).on('error', (err) => {
-        console.error(`Error: ${err.message}`);
-    });
+    }
+    
 }
 
 console.log('botActions is included');
