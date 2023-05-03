@@ -70,6 +70,7 @@ DB_HOST=<your_db_host>
 DB_USER=<your_db_>
 DB_PASSWORD=<your_db_password>
 DB_DATABASE=<your_db_database>
+DOMAIN=<yout domain>
 ```
 4. Create a database file in the database folder with the name ``` telegramBotDB.db ```.
 

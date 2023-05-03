@@ -11,6 +11,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
     read -p "Enter your database username: " DB_USER
     read -p "Enter your database password: " DB_PASSWORD
     read -p "Enter your database name: " DB_DATABASE
+    read -p "Enter your domain: " DOMAIN
 
     # Write the parameter values to the .env file
     echo "BOT_KEY=$BOT_KEY" > ./.env
@@ -18,6 +19,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
     echo "DB_USER=$DB_USER" >> ./.env
     echo "DB_PASSWORD=$DB_PASSWORD" >> ./.env
     echo "DB_DATABASE=$DB_DATABASE" >> ./.env
+    echo "DOMAIN=$DOMAIN" >> ./.env
 
     echo "Successfully created .env file."
 else
