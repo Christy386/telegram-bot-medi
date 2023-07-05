@@ -63,156 +63,216 @@ function currentStatus(productId, callbackDone, callbackErr){//2 callbacks, the 
 
 function go2approved(productId){
     const url = process.env.DOMAIN+"/hub/indexProjMedi.php?func=aprova&id="+productId;
-
-    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
-        https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("Approved");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+    
+    https.get(url, (res) => {
+        let data = '';
+        res.on('data', (chunk) => {
+            data += chunk;
         });
-
-    }else{
-        http.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("Approved");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+        res.on('end', () => {
+            console.log("Approved");
         });
-    }
+    }).on('error', (err) => {
+        console.error(`Error: ${err.message}`);
+    });
+
+    // if(process.env.DOMAIN.indexOf("https://") >= 0){//verifica se é https ou http
+    //     https.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("Approved");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+
+    // }else{
+    //     http.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("Approved");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }
     
 }
 
 function go2StartPrint(productId){
     const url = process.env.DOMAIN+"/hub/indexOperador.php?func=executa&id="+productId;
-    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
-        https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("printing");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+
+    https.get(url, (res) => {
+        let data = '';
+        res.on('data', (chunk) => {
+            data += chunk;
         });
-    }else{
-        http.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("printing");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+        res.on('end', () => {
+            console.log("printing");
         });
-    }
+    }).on('error', (err) => {
+        console.error(`Error: ${err.message}`);
+    });
+
+    // if(process.env.DOMAIN.indexOf("https://")){//verifica se é https ou http
+    //     https.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("printing");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }else{
+    //     http.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("printing");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }
     
 }
 
 function go2AfterProcess(productId){
     const url = process.env.DOMAIN+"/hub/indexOperador.php?func=finaliza&id="+productId+"&envio=%27processamento%27";
 
-    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
-        https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("After Processing");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+    https.get(url, (res) => {
+        let data = '';
+        res.on('data', (chunk) => {
+            data += chunk;
         });
-    }else{
-        http.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("After Processing");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+        res.on('end', () => {
+            console.log("After Processing");
         });
-    }
+    }).on('error', (err) => {
+        console.error(`Error: ${err.message}`);
+    });
+
+    // if(process.env.DOMAIN.indexOf("https://")){//verifica se é https ou http
+    //     https.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("After Processing");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }else{
+    //     http.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("After Processing");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }
     
 }
 
 function go2EndPrint(productId){
     const url = process.env.DOMAIN+"/hub/indexOperador.php?func=finaliza&id="+productId+"&envio=1";
 
-    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
-        https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("Ended print");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+    https.get(url, (res) => {
+        let data = '';
+        res.on('data', (chunk) => {
+            data += chunk;
         });
-    }else{
-        http.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("Ended print");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
+        res.on('end', () => {
+            console.log("Ended print");
         });
-    }
+    }).on('error', (err) => {
+        console.error(`Error: ${err.message}`);
+    });
+
+    // if(process.env.DOMAIN.indexOf("https://")){//verifica se é https ou http
+    //     https.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("Ended print");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }else{
+    //     http.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("Ended print");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }
     
 }
 
 function go2delivery(productId){
     const url = process.env.DOMAIN+"/hub/solicitacoesAbertoOp.php?func=finaliza&id="+productId+"&envio=%27fim%27";
 
-    if(process.env.DOMAIN[4=="s"]){//verifica se é https ou http
-        https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("delivered");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
-        });
-    }else{
-        http.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                console.log("delivered");
-            });
-        }).on('error', (err) => {
-            console.error(`Error: ${err.message}`);
-        });
-    }
+    https.get(url, (res) => {
+        let data = '';
+    res.on('data', (chunk) => {
+        data += chunk;
+    });
+    res.on('end', () => {
+        console.log("delivered");
+    });
+    }).on('error', (err) => {
+        console.error(`Error: ${err.message}`);
+    });
+    // if(process.env.DOMAIN.indexOf("https://")){//verifica se é https ou http
+    //     https.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("delivered");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }else{
+    //     http.get(url, (res) => {
+    //         let data = '';
+    //         res.on('data', (chunk) => {
+    //             data += chunk;
+    //         });
+    //         res.on('end', () => {
+    //             console.log("delivered");
+    //         });
+    //     }).on('error', (err) => {
+    //         console.error(`Error: ${err.message}`);
+    //     });
+    // }
     
 }
 
